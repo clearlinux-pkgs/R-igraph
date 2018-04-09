@@ -1,1 +1,13 @@
 # This file contains recursive sources that require this package
+R-bipartite
+R-brms
+R-broom
+R-caret
+R-diffusionMap
+R-dimRed
+R-modelr
+R-recipes
+R-rstanarm
+R-shinystan
+R-threejs
+R-tidyverse
