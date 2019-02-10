@@ -1,6 +1,7 @@
-1.2.2
+1.2.3
+R-pkgconfig
+R-rlang
 gmp-dev
 libxml2-dev
-R-pkgconfig
 xz-dev
 zlib-dev
