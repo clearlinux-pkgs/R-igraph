@@ -6,4 +6,6 @@ R-bipartite
 R-diffusionMap
 R-dimRed
 R-phangorn
+R-rstanarm
+R-shinystan
 R-threejs
