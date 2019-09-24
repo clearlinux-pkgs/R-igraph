@@ -4,14 +4,16 @@
 #
 Name     : R-igraph
 Version  : 1.2.4.1
-Release  : 26
+Release  : 27
 URL      : https://cran.r-project.org/src/contrib/igraph_1.2.4.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/igraph_1.2.4.1.tar.gz
 Summary  : Network Analysis and Visualization
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0 GPL-2.0+ LGPL-2.1
 Requires: R-igraph-lib = %{version}-%{release}
+Requires: R-magrittr
 Requires: R-pkgconfig
+BuildRequires : R-magrittr
 BuildRequires : R-pkgconfig
 BuildRequires : buildreq-R
 BuildRequires : gmp-dev
@@ -19,12 +21,8 @@ BuildRequires : libxml2-dev
 BuildRequires : xz-dev
 
 %description
-Cliquer - routines for clique searching
----------------------------------------
-Cliquer is a set of C routines for finding cliques in an arbitrary
-weighted graph. It uses an exact branch-and-bound algorithm recently
-developed by Patric Ostergard. It is designed with the aim of being
-efficient while still being flexible and easy to use.
+handle large graphs very well and provides functions for generating random
+  and regular graphs, graph visualization, centrality methods and much more.
 
 %package lib
 Summary: lib components for the R-igraph package.
@@ -41,13 +39,13 @@ lib components for the R-igraph package.
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1555946771
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569290681
 
 %install
-export SOURCE_DATE_EPOCH=1555946771
+export SOURCE_DATE_EPOCH=1569290681
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -76,7 +74,7 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0

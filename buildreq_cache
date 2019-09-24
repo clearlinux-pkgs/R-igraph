@@ -1,8 +1,4 @@
 1.2.4.1
-R-assertthat
-R-pkgconfig
-R-rlang
 gmp-dev
 libxml2-dev
 xz-dev
-zlib-dev
