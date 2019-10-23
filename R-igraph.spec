@@ -4,7 +4,7 @@
 #
 Name     : R-igraph
 Version  : 1.2.4.1
-Release  : 27
+Release  : 28
 URL      : https://cran.r-project.org/src/contrib/igraph_1.2.4.1.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/igraph_1.2.4.1.tar.gz
 Summary  : Network Analysis and Visualization
@@ -18,11 +18,16 @@ BuildRequires : R-pkgconfig
 BuildRequires : buildreq-R
 BuildRequires : gmp-dev
 BuildRequires : libxml2-dev
+BuildRequires : util-linux
 BuildRequires : xz-dev
 
 %description
-handle large graphs very well and provides functions for generating random
-  and regular graphs, graph visualization, centrality methods and much more.
+Cliquer - routines for clique searching
+---------------------------------------
+Cliquer is a set of C routines for finding cliques in an arbitrary
+weighted graph. It uses an exact branch-and-bound algorithm recently
+developed by Patric Ostergard. It is designed with the aim of being
+efficient while still being flexible and easy to use.
 
 %package lib
 Summary: lib components for the R-igraph package.
@@ -40,10 +45,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1569290681
+export SOURCE_DATE_EPOCH=1571847167
 
 %install
-export SOURCE_DATE_EPOCH=1569290681
+export SOURCE_DATE_EPOCH=1571847167
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
