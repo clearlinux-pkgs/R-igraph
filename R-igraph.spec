@@ -4,7 +4,7 @@
 #
 Name     : R-igraph
 Version  : 1.2.5
-Release  : 33
+Release  : 34
 URL      : https://cran.r-project.org/src/contrib/igraph_1.2.5.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/igraph_1.2.5.tar.gz
 Summary  : Network Analysis and Visualization
@@ -21,12 +21,8 @@ BuildRequires : libxml2-dev
 BuildRequires : xz-dev
 
 %description
-Cliquer - routines for clique searching
----------------------------------------
-Cliquer is a set of C routines for finding cliques in an arbitrary
-weighted graph. It uses an exact branch-and-bound algorithm recently
-developed by Patric Ostergard. It is designed with the aim of being
-efficient while still being flexible and easy to use.
+handle large graphs very well and provides functions for generating random
+  and regular graphs, graph visualization, centrality methods and much more.
 
 %package lib
 Summary: lib components for the R-igraph package.
@@ -38,21 +34,22 @@ lib components for the R-igraph package.
 
 %prep
 %setup -q -c -n igraph
+cd %{_builddir}/igraph
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1584636431
+export SOURCE_DATE_EPOCH=1589569578
 
 %install
-export SOURCE_DATE_EPOCH=1584636431
+export SOURCE_DATE_EPOCH=1589569578
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
