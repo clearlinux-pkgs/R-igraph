@@ -1,7 +1,6 @@
 # This file contains recursive sources that require this package
 R-BoolNet
 R-adegenet
-R-bio3d
 R-bipartite
 R-diffusionMap
 R-influenceR
