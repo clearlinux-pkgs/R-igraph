@@ -1,9 +1,9 @@
 # This file contains recursive sources that require this package
 R-BoolNet
+R-DiagrammeR
 R-adegenet
 R-bipartite
 R-diffusionMap
 R-influenceR
-R-lfe
 R-phangorn
 R-threejs
