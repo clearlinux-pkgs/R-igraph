@@ -4,7 +4,7 @@
 #
 Name     : R-igraph
 Version  : 1.2.11
-Release  : 53
+Release  : 54
 URL      : https://cran.r-project.org/src/contrib/igraph_1.2.11.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/igraph_1.2.11.tar.gz
 Summary  : Network Analysis and Visualization
