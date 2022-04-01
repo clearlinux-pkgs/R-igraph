@@ -1,9 +1,12 @@
-Configure miss: g++ -std=gnu++14 option to enable C++11 features
-Configure miss: g++ -std=gnu++14 option to enable C++11 features
-Configure miss: g++ -std=gnu++14 option to enable C++11 features
-Configure miss: gcc options needed to detect all undeclared functions
-Configure miss: gcc options needed to detect all undeclared functions
-Configure miss: gcc options needed to detect all undeclared functions
+Configure miss: _stricmp
+Configure miss: _stricmp
+Configure miss: _stricmp
+Configure miss: g++ -std=gnu++11 option to enable C++11 features
+Configure miss: g++ -std=gnu++11 option to enable C++11 features
+Configure miss: g++ -std=gnu++11 option to enable C++11 features
 Configure miss: glp_read_mps in -lglpk
 Configure miss: glp_read_mps in -lglpk
 Configure miss: glp_read_mps in -lglpk
+Configure miss: isfinite
+Configure miss: isfinite
+Configure miss: isfinite
