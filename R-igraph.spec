@@ -4,10 +4,10 @@
 # Using build pattern: R
 #
 Name     : R-igraph
-Version  : 1.4.2
-Release  : 69
-URL      : https://cran.r-project.org/src/contrib/igraph_1.4.2.tar.gz
-Source0  : https://cran.r-project.org/src/contrib/igraph_1.4.2.tar.gz
+Version  : 1.4.3
+Release  : 70
+URL      : https://cran.r-project.org/src/contrib/igraph_1.4.3.tar.gz
+Source0  : https://cran.r-project.org/src/contrib/igraph_1.4.3.tar.gz
 Summary  : Network Analysis and Visualization
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0+
@@ -21,7 +21,6 @@ BuildRequires : R-cpp11
 BuildRequires : R-magrittr
 BuildRequires : R-pkgconfig
 BuildRequires : R-rlang
-BuildRequires : R-vdiffr
 BuildRequires : buildreq-R
 BuildRequires : gmp-dev
 BuildRequires : libxml2-dev
@@ -53,16 +52,19 @@ license components for the R-igraph package.
 
 %prep
 %setup -q -n igraph
+pushd ..
+cp -a igraph buildavx2
+popd
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1680912088
+export SOURCE_DATE_EPOCH=1685643520
 
 %install
-export SOURCE_DATE_EPOCH=1680912088
+export SOURCE_DATE_EPOCH=1685643520
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/R-igraph
 cp %{_builddir}/igraph/src/vendor/uuid/COPYING %{buildroot}/usr/share/package-licenses/R-igraph/16fd05e0c827f9372ff54c2a16b30353842a6df1 || :
@@ -102,6 +104,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
 R CMD check --no-manual --no-examples --no-codoc . || :
 
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
