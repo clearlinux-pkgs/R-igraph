@@ -4,23 +4,26 @@
 # Using build pattern: R
 #
 Name     : R-igraph
-Version  : 1.4.3
-Release  : 70
-URL      : https://cran.r-project.org/src/contrib/igraph_1.4.3.tar.gz
-Source0  : https://cran.r-project.org/src/contrib/igraph_1.4.3.tar.gz
+Version  : 1.5.0
+Release  : 71
+URL      : https://cran.r-project.org/src/contrib/igraph_1.5.0.tar.gz
+Source0  : https://cran.r-project.org/src/contrib/igraph_1.5.0.tar.gz
 Summary  : Network Analysis and Visualization
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0+
 Requires: R-igraph-lib = %{version}-%{release}
 Requires: R-igraph-license = %{version}-%{release}
+Requires: R-cli
 Requires: R-cpp11
 Requires: R-magrittr
 Requires: R-pkgconfig
 Requires: R-rlang
+BuildRequires : R-cli
 BuildRequires : R-cpp11
 BuildRequires : R-magrittr
 BuildRequires : R-pkgconfig
 BuildRequires : R-rlang
+BuildRequires : R-vdiffr
 BuildRequires : buildreq-R
 BuildRequires : gmp-dev
 BuildRequires : libxml2-dev
@@ -30,8 +33,9 @@ BuildRequires : xz-dev
 %define debug_package %{nil}
 
 %description
-handle large graphs very well and provides functions for generating random
-  and regular graphs, graph visualization, centrality methods and much more.
+handle large graphs very well and provides functions for generating
+    random and regular graphs, graph visualization, centrality methods and
+    much more.
 
 %package lib
 Summary: lib components for the R-igraph package.
@@ -61,10 +65,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1685643520
+export SOURCE_DATE_EPOCH=1686930589
 
 %install
-export SOURCE_DATE_EPOCH=1685643520
+export SOURCE_DATE_EPOCH=1686930589
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/R-igraph
 cp %{_builddir}/igraph/src/vendor/uuid/COPYING %{buildroot}/usr/share/package-licenses/R-igraph/16fd05e0c827f9372ff54c2a16b30353842a6df1 || :
@@ -163,12 +167,16 @@ R CMD check --no-manual --no-examples --no-codoc . || :
 /usr/lib64/R/library/igraph/tests/testthat/_snaps/graph.bfs.md
 /usr/lib64/R/library/igraph/tests/testthat/_snaps/graph.data.frame.md
 /usr/lib64/R/library/igraph/tests/testthat/_snaps/hrg.md
+/usr/lib64/R/library/igraph/tests/testthat/_snaps/make.md
+/usr/lib64/R/library/igraph/tests/testthat/_snaps/old-data-type.md
 /usr/lib64/R/library/igraph/tests/testthat/_snaps/plot/basic-graph-r-4-2.svg
 /usr/lib64/R/library/igraph/tests/testthat/_snaps/print.md
+/usr/lib64/R/library/igraph/tests/testthat/_snaps/serialize.md
+/usr/lib64/R/library/igraph/tests/testthat/_snaps/utils-ensure.md
+/usr/lib64/R/library/igraph/tests/testthat/_snaps/versions.md
 /usr/lib64/R/library/igraph/tests/testthat/_snaps/vs-es-printing.md
 /usr/lib64/R/library/igraph/tests/testthat/_snaps/vs-es.md
 /usr/lib64/R/library/igraph/tests/testthat/celegansneural.gml.gz
-/usr/lib64/R/library/igraph/tests/testthat/dyad.census.R
 /usr/lib64/R/library/igraph/tests/testthat/football.gml.gz
 /usr/lib64/R/library/igraph/tests/testthat/helper.R
 /usr/lib64/R/library/igraph/tests/testthat/power.gml.gz
@@ -205,6 +213,7 @@ R CMD check --no-manual --no-examples --no-codoc . || :
 /usr/lib64/R/library/igraph/tests/testthat/test-clusters.R
 /usr/lib64/R/library/igraph/tests/testthat/test-coloring.R
 /usr/lib64/R/library/igraph/tests/testthat/test-communities.R
+/usr/lib64/R/library/igraph/tests/testthat/test-components.R
 /usr/lib64/R/library/igraph/tests/testthat/test-constraint.R
 /usr/lib64/R/library/igraph/tests/testthat/test-constructor-modifiers.R
 /usr/lib64/R/library/igraph/tests/testthat/test-contract.vertices.R
@@ -257,7 +266,6 @@ R CMD check --no-manual --no-examples --no-codoc . || :
 /usr/lib64/R/library/igraph/tests/testthat/test-graph.dfs.R
 /usr/lib64/R/library/igraph/tests/testthat/test-graph.edgelist.R
 /usr/lib64/R/library/igraph/tests/testthat/test-graph.eigen.R
-/usr/lib64/R/library/igraph/tests/testthat/test-graph.formula.R
 /usr/lib64/R/library/igraph/tests/testthat/test-graph.isoclass.R
 /usr/lib64/R/library/igraph/tests/testthat/test-graph.kautz.R
 /usr/lib64/R/library/igraph/tests/testthat/test-graph.knn.R
@@ -267,6 +275,7 @@ R CMD check --no-manual --no-examples --no-codoc . || :
 /usr/lib64/R/library/igraph/tests/testthat/test-graph.subisomorphic.vf2.R
 /usr/lib64/R/library/igraph/tests/testthat/test-graphNEL.R
 /usr/lib64/R/library/igraph/tests/testthat/test-graphlets.R
+/usr/lib64/R/library/igraph/tests/testthat/test-handler.R
 /usr/lib64/R/library/igraph/tests/testthat/test-hrg.R
 /usr/lib64/R/library/igraph/tests/testthat/test-hsbm.R
 /usr/lib64/R/library/igraph/tests/testthat/test-identical_graphs.R
@@ -322,6 +331,7 @@ R CMD check --no-manual --no-examples --no-codoc . || :
 /usr/lib64/R/library/igraph/tests/testthat/test-sbm.game.R
 /usr/lib64/R/library/igraph/tests/testthat/test-scan.R
 /usr/lib64/R/library/igraph/tests/testthat/test-sdf.R
+/usr/lib64/R/library/igraph/tests/testthat/test-serialize.R
 /usr/lib64/R/library/igraph/tests/testthat/test-sgm.R
 /usr/lib64/R/library/igraph/tests/testthat/test-sir.R
 /usr/lib64/R/library/igraph/tests/testthat/test-sphere.R
@@ -330,6 +340,7 @@ R CMD check --no-manual --no-examples --no-codoc . || :
 /usr/lib64/R/library/igraph/tests/testthat/test-trees.R
 /usr/lib64/R/library/igraph/tests/testthat/test-triangles.R
 /usr/lib64/R/library/igraph/tests/testthat/test-unfold.tree.R
+/usr/lib64/R/library/igraph/tests/testthat/test-utils-ensure.R
 /usr/lib64/R/library/igraph/tests/testthat/test-version.R
 /usr/lib64/R/library/igraph/tests/testthat/test-versions.R
 /usr/lib64/R/library/igraph/tests/testthat/test-vs-es-printing.R
