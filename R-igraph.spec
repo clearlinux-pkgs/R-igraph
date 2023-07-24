@@ -4,10 +4,10 @@
 # Using build pattern: R
 #
 Name     : R-igraph
-Version  : 1.5.0
-Release  : 72
-URL      : https://cran.r-project.org/src/contrib/igraph_1.5.0.tar.gz
-Source0  : https://cran.r-project.org/src/contrib/igraph_1.5.0.tar.gz
+Version  : 1.5.0.1
+Release  : 73
+URL      : https://cran.r-project.org/src/contrib/igraph_1.5.0.1.tar.gz
+Source0  : https://cran.r-project.org/src/contrib/igraph_1.5.0.1.tar.gz
 Summary  : Network Analysis and Visualization
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0+
@@ -65,10 +65,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1686930589
+export SOURCE_DATE_EPOCH=1690214281
 
 %install
-export SOURCE_DATE_EPOCH=1686930589
+export SOURCE_DATE_EPOCH=1690214281
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/R-igraph
 cp %{_builddir}/igraph/src/vendor/uuid/COPYING %{buildroot}/usr/share/package-licenses/R-igraph/16fd05e0c827f9372ff54c2a16b30353842a6df1 || :
