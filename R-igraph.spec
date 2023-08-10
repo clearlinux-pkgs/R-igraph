@@ -4,10 +4,10 @@
 # Using build pattern: R
 #
 Name     : R-igraph
-Version  : 1.5.0.1
-Release  : 73
-URL      : https://cran.r-project.org/src/contrib/igraph_1.5.0.1.tar.gz
-Source0  : https://cran.r-project.org/src/contrib/igraph_1.5.0.1.tar.gz
+Version  : 1.5.1
+Release  : 74
+URL      : https://cran.r-project.org/src/contrib/igraph_1.5.1.tar.gz
+Source0  : https://cran.r-project.org/src/contrib/igraph_1.5.1.tar.gz
 Summary  : Network Analysis and Visualization
 Group    : Development/Tools
 License  : BSD-3-Clause GPL-2.0+
@@ -15,11 +15,13 @@ Requires: R-igraph-lib = %{version}-%{release}
 Requires: R-igraph-license = %{version}-%{release}
 Requires: R-cli
 Requires: R-cpp11
+Requires: R-lifecycle
 Requires: R-magrittr
 Requires: R-pkgconfig
 Requires: R-rlang
 BuildRequires : R-cli
 BuildRequires : R-cpp11
+BuildRequires : R-lifecycle
 BuildRequires : R-magrittr
 BuildRequires : R-pkgconfig
 BuildRequires : R-rlang
@@ -65,10 +67,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1690214281
+export SOURCE_DATE_EPOCH=1691685385
 
 %install
-export SOURCE_DATE_EPOCH=1690214281
+export SOURCE_DATE_EPOCH=1691685385
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/R-igraph
 cp %{_builddir}/igraph/src/vendor/uuid/COPYING %{buildroot}/usr/share/package-licenses/R-igraph/16fd05e0c827f9372ff54c2a16b30353842a6df1 || :
@@ -153,6 +155,15 @@ R CMD check --no-manual --no-examples --no-codoc . || :
 /usr/lib64/R/library/igraph/doc/index.html
 /usr/lib64/R/library/igraph/help/AnIndex
 /usr/lib64/R/library/igraph/help/aliases.rds
+/usr/lib64/R/library/igraph/help/figures/lifecycle-archived.svg
+/usr/lib64/R/library/igraph/help/figures/lifecycle-defunct.svg
+/usr/lib64/R/library/igraph/help/figures/lifecycle-deprecated.svg
+/usr/lib64/R/library/igraph/help/figures/lifecycle-experimental.svg
+/usr/lib64/R/library/igraph/help/figures/lifecycle-maturing.svg
+/usr/lib64/R/library/igraph/help/figures/lifecycle-questioning.svg
+/usr/lib64/R/library/igraph/help/figures/lifecycle-soft-deprecated.svg
+/usr/lib64/R/library/igraph/help/figures/lifecycle-stable.svg
+/usr/lib64/R/library/igraph/help/figures/lifecycle-superseded.svg
 /usr/lib64/R/library/igraph/help/igraph.rdb
 /usr/lib64/R/library/igraph/help/igraph.rdx
 /usr/lib64/R/library/igraph/help/paths.rds
