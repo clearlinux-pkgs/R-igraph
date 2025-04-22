@@ -7,7 +7,7 @@
 #
 Name     : R-igraph
 Version  : 2.0.3
-Release  : 79
+Release  : 80
 URL      : https://cran.r-project.org/src/contrib/igraph_2.0.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/igraph_2.0.3.tar.gz
 Summary  : Network Analysis and Visualization
